@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Paladin",
+    "version": "1.0",
+    "Description": "Protects the user from offensive news",
+    "icons": {
+        "128": "paladin128.png",
+        "48": "paladin48.png",
+        "16": "paladin16.png"
+    },
+    "browser_action": {
+        "default_icon": "paladin16.png",
+        "default_popup": "popup.html"
+    }
+}
