@@ -1,3 +1,19 @@
+chrome.windows.getCurrent(function(window) {
+    chrome.tabs.query({
+        'active': true,
+        'windowId': chrome.windows.WINDOW_ID_CURRENT
+    },
+        function(tabs) {
+            let urli = new URL(tabs[0].url);
+        }
+    );
+});
+
+
+
+let text_area = document.getElementById("greet");
+
+
 var websites = new Set(
     "nationalpost.com",
     "www.theglobeandmail.com",
@@ -73,16 +89,12 @@ var websites = new Set(
 );
 
 function showValidity(host, text) {
-    if (supported_set.websites.has(host)){
-        text.innerHTML = "This website is valid";
+    if (websites.has(host)){
+        text.textContent = "This website is valid";
     } else {
-        text.innerHTML = "Sorry this website has not been supported yet";
+        text.textContent = "Sorry this website has not been supported yet";
     }
 }
 
 
-let current_website = window.location;
-
-let text_area = Document.getElementbyId("text");
-
-showValidity(current_website.host, text_area);
+showValidity(urli.hostname, text_area);
