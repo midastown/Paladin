@@ -4,12 +4,12 @@
     "version": "1.0",
     "Description": "Protects the user from offensive news",
     "icons": {
-        "128": "paladin128.png",
-        "48": "paladin48.png",
-        "16": "paladin16.png"
+        "128": "icons/paladin128.png",
+        "48": "icons/paladin48.png",
+        "16": "icons/paladin16.png"
     },
     "browser_action": {
-        "default_icon": "paladin16.png",
+        "default_icon": "icons/paladin16.png",
         "default_popup": "popup.html"
     },
     "permissions": [ "tabs" ]
