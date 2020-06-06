@@ -1,0 +1,19 @@
+body {
+    width: 275px;
+    min-height:300px;
+    margin: 10px;
+    padding: 0;
+    font-family: Verdana, Helvetica, sans-serif;
+	font-size: 14px;
+    line-height: 1.5em;
+    background: #C8FFD1;
+}
+
+#icon {
+    vertical-align: middle;
+}
+
+#titleH2 {
+    color: #833139;
+    text-decoration: underline;
+}
