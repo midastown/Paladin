@@ -1,0 +1,21 @@
+websites succesfully parsed:
+- globe and mail
+- calgary herald
+- calgary sun 
+- edmonton journal
+- edmonton sun
+- 
+
+
+website hard to parse: 
+- national post
+- daily herald tribune
+- red deer advocate
+
+website that need regex:
+- lethbridge herald -> (yyyy/mm/dd)
+- medicine hat news -> (yyyy/mm/dd)
+-
+
+websites hard to connect:
+- alaska highway news 

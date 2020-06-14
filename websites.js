@@ -9,7 +9,7 @@ var websites = new Set([
     "lethbridgeherald.com",
     "medicinehatnews.com",
     "www.reddeeradvocate.com",
-    "www.alaskahighwaynews.ca",
+    "www.alaskahighwaynews.ca", // last one checked
     "www.kelownadailycourier.ca",
     "www.winnipegfreepress.com",
     "www.brandonsun.com",
