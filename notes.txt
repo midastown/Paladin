@@ -4,18 +4,75 @@ websites succesfully parsed:
 - calgary sun 
 - edmonton journal
 - edmonton sun
-- 
+- kelowna daily courier 
+- vancouver sun
+- the province
+- pentictonherald
+- winnipeg sun                 #1
+- recorder                     #1
+- standard freeholder          #1
+- kenora daily minerandnews
+- the whig                     #1
+- lf press
+- nugget                       #1
+- ottawa citizen
+- ottawa sun
+- owen sound sun times         #1
+- the observer                 #1
+- sault star                   #1
+- simcoe reformer              #1
+- st thomas times journal      #1
+- stratford beacon herald      #1
+- the sudbury star             #1
+- chronicle journal
+- timmins press
+- toronto sun
+- windsor star
+- woodstock sentinel review
+- the star phoenix
+- leader post
 
 
 website hard to parse: 
 - national post
 - daily herald tribune
 - red deer advocate
+- winnipeg free press
+- brandon sun
+- times colonist
+- trail times 
+- tj.news            => Agressive Paywall
+- the telegram
+- the chronicle herald
+- salt wire
+- niagara falls review
+- le droit
+- st catharines standard
+- welland tribune
+- www.theguardian.pe.ca
+- journal pioneer
+- la voix de lest
+- white horse star
+- www.sherbrookerecord.com
+
 
 website that need regex:
-- lethbridge herald -> (yyyy/mm/dd)
-- medicine hat news -> (yyyy/mm/dd)
--
+- lethbridge herald             -> (yyyy/mm/dd)
+- medicine hat news             -> (yyyy/mm/dd)
+- the spec                      -> (yyyy/mm/dd)
+- the record                    -> (yyyy/mm/dd)
+- the peter borough examiner    -> (yyyy/mm/dd)
+- the star                      -> (yyyy/mm/dd)
+- paherald.sk.ca                -> (yyyy/mm/dd)
+- www.lapresse.ca               -> (yyyy-mm-dd)
+
+
 
 websites hard to connect:
 - alaska highway news 
+- acadie nouvelle
+- capebreton post
+- brant ford expositor
+
+
+
