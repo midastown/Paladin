@@ -31,10 +31,16 @@ websites succesfully parsed:
 - woodstock sentinel review
 - the star phoenix
 - leader post
+- national post                #1
+- montrealgazette.com
 
+#1: All of these sites have "wcm" in probably 80% of their articles, but for some article, that keyword is not present
+    So not all of the sites above have been marked by the #1 because for those, I could't find an article where the keyword
+    didn't appear, but the threat can still be present. 
+    Fortunately, it seems that all of those sites are using the same framework, so finding a solution for one could equal
+    finding a solution for them all.
 
 website hard to parse: 
-- national post
 - daily herald tribune
 - red deer advocate
 - winnipeg free press
@@ -54,6 +60,13 @@ website hard to parse:
 - la voix de lest
 - white horse star
 - www.sherbrookerecord.com
+- www.ledevoir.com  => its wierd, their articles are usually preceded with a 6 digit number in the URL
+                       https://www.ledevoir.com/monde/""""174172""""/afghanistan-un-dirigeant-d-al-qaida-est-tue
+                       but the location of that number can be difficult to predict since file structure is not constant
+- journalmetro.com  => same thing as ledevoir, so if I can split the url path with "/" as a delimiter and loop through
+                       the list of strings to see if one of them is only numeric, this could work.
+- www.lesoleil.com
+- www.latribune.ca
 
 
 website that need regex:
@@ -65,6 +78,9 @@ website that need regex:
 - the star                      -> (yyyy/mm/dd)
 - paherald.sk.ca                -> (yyyy/mm/dd)
 - www.lapresse.ca               -> (yyyy-mm-dd)
+- www.journaldemontreal.com     -> (yyyy/mm/dd)
+- www.journaldequebec.com       -> (yyyy/mm/dd)
+
 
 
 
