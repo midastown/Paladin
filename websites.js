@@ -62,7 +62,7 @@ var websites = new Set([
     "leaderpost.com",
     "paherald.sk.ca",
     "www.lapresse.ca",
-    "www.sherbrookerecord.com", // last one checked
+    "www.sherbrookerecord.com", 
     "www.ledevoir.com",
     "www.journaldemontreal.com",
     "journalmetro.com",

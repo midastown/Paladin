@@ -33,6 +33,16 @@ websites succesfully parsed:
 - leader post
 - national post                #1
 - montrealgazette.com
+- lethbridge herald             -> (yyyy/mm/dd)
+- medicine hat news             -> (yyyy/mm/dd)
+- the spec                      -> (yyyy/mm/dd)
+- the record                    -> (yyyy/mm/dd)
+- the peter borough examiner    -> (yyyy/mm/dd)
+- the star                      -> (yyyy/mm/dd)
+- paherald.sk.ca                -> (yyyy/mm/dd)
+- www.lapresse.ca               -> (yyyy-mm-dd)
+- www.journaldemontreal.com     -> (yyyy/mm/dd)
+- www.journaldequebec.com       -> (yyyy/mm/dd)
 
 #1: All of these sites have "wcm" in probably 80% of their articles, but for some article, that keyword is not present
     So not all of the sites above have been marked by the #1 because for those, I could't find an article where the keyword
@@ -69,17 +79,6 @@ website hard to parse:
 - www.latribune.ca
 
 
-website that need regex:
-- lethbridge herald             -> (yyyy/mm/dd)
-- medicine hat news             -> (yyyy/mm/dd)
-- the spec                      -> (yyyy/mm/dd)
-- the record                    -> (yyyy/mm/dd)
-- the peter borough examiner    -> (yyyy/mm/dd)
-- the star                      -> (yyyy/mm/dd)
-- paherald.sk.ca                -> (yyyy/mm/dd)
-- www.lapresse.ca               -> (yyyy-mm-dd)
-- www.journaldemontreal.com     -> (yyyy/mm/dd)
-- www.journaldequebec.com       -> (yyyy/mm/dd)
 
 
 
