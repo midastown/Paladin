@@ -3,6 +3,12 @@
     "name": "Paladin",
     "version": "1.0",
     "Description": "Protects the user from offensive news",
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
     "icons": {
         "128": "icons/paladin128.png",
         "48": "icons/paladin48.png",
