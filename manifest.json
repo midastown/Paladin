@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Paladin",
     "version": "1.0",
-    "Description": "Protects the user from offensive news",
+    "description": "Protects the user from offensive news",
     "content_scripts": [
         {
             "matches": ["<all_urls>"],

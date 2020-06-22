@@ -4,15 +4,26 @@ let head = document.getElementById("text");
 let perc = document.getElementById("percentage");
 let vote = document.getElementById("votes");
 let isArticle = false;
+// chrome.browserAction.onClicked.addListener(buttonClicked);
+
+function buttonClicked(tab) {
+    let msg = {
+        txt: "getInfo"
+    }
+    chrome.tabs.sendMessage(tab[0].id, msg, function(message) {
+        console.log(message);
+    });
+}
+
 
 function showInfo(tab) {
     let hostname = new URL(tab[0].url);
 
     if (websites.has(hostname.hostname)) {
         parseURL(hostname);
-        // if (! isArticle) {
-        //      parseHTML(hostname)
-        // }
+        if (! isArticle) {
+            checkContent(tab);
+        }
         if (isArticle) {
             showData(hostname);
         } else {
@@ -24,6 +35,12 @@ function showInfo(tab) {
     
 }
 
+function checkContent(tab) {
+
+    chrome.tabs.sendMessage(tab[0].id, {txt: "getInfo"}, function(message) {
+        isArticle = message.isArticle;
+    });
+}
 
 
 

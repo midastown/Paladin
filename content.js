@@ -1,14 +1,32 @@
-let head = document.getElementsByTagName("head");
-let metas = head[0].getElementsByTagName("meta");
 
-function parseHTML(metas) {
+
+
+function parseHTML() {
+    let msg = {isArticle: false};
+    let head = document.getElementsByTagName("head");
+    let metas = head[0].getElementsByTagName("meta");
+
     for (meta of metas) {
         if (meta.getAttribute("content") == "article") {
-            return true;
+            msg.isArticle = true;
+            return msg;
         }
     }
-    return false;
+    return msg;
+}
+
+let msg = parseHTML();
+
+
+chrome.runtime.onMessage.addListener(gotMessage);
+
+function gotMessage(message, sender, sendResponse) {
+    if (message.txt == "getInfo") {
+        sendResponse(msg);
+    } else {
+        sendResponse({txt: "something's wrong"});
+    }
 }
 
 
-console.log(parseHTML(metas));
+// console.log(parseHTML(metas));
