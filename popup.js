@@ -20,27 +20,36 @@ function showInfo(tab) {
     let hostname = new URL(tab[0].url);
 
     if (websites.has(hostname.hostname)) {
-        parseURL(hostname);
-        if (! isArticle) {
-            checkContent(tab);
-        }
-        if (isArticle) {
-            showData(hostname);
-        } else {
-            head.textContent = "Yes this website is indexed, go check out an article to see if we have data on it.";
-        }
+        //parseURL(hostname);
+        chrome.tabs.sendMessage(tab[0].id, {txt: "getInfo"}, function(message) {
+            console.log("before: " + isArticle);
+            isArticle = message.isArticle;
+            if (isArticle) {
+                showData(hostname);
+                return;
+            }
+            console.log("after: " + isArticle);
+        });
+        //if (isArticle) {
+            //showData(hostname);
+        //} else {
+            //head.textContent = "Yes this website is indexed, go check out an article to see if we have data on it.";
+        //}
+        head.textContent = "Yes this website is indexed, go check out an article to see if we have data on it.";
     } else {
         head.textContent = "Sorry this website has not been indexed yet.";
     }
     
 }
 
-function checkContent(tab) {
+//  function checkContent(tab) {
 
-    chrome.tabs.sendMessage(tab[0].id, {txt: "getInfo"}, function(message) {
-        isArticle = message.isArticle;
-    });
-}
+//      chrome.tabs.sendMessage(tab[0].id, {txt: "getInfo"}, gotMessage);
+//      
+//      function gotMessage(message) {
+//          isArticle = message.isArticle;
+//      };
+//  }
 
 
 
