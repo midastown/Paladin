@@ -4,23 +4,13 @@ let head = document.getElementById("text");
 let perc = document.getElementById("percentage");
 let vote = document.getElementById("votes");
 let isArticle = false;
-// chrome.browserAction.onClicked.addListener(buttonClicked);
 
-function buttonClicked(tab) {
-    let msg = {
-        txt: "getInfo"
-    }
-    chrome.tabs.sendMessage(tab[0].id, msg, function(message) {
-        console.log(message);
-    });
-}
 
 
 function showInfo(tab) {
     let hostname = new URL(tab[0].url);
 
     if (websites.has(hostname.hostname)) {
-        //parseURL(hostname);
         chrome.tabs.sendMessage(tab[0].id, {txt: "getInfo"}, function(message) {
             console.log("before: " + isArticle);
             isArticle = message.isArticle;
@@ -30,46 +20,16 @@ function showInfo(tab) {
             }
             console.log("after: " + isArticle);
         });
-        //if (isArticle) {
-            //showData(hostname);
-        //} else {
-            //head.textContent = "Yes this website is indexed, go check out an article to see if we have data on it.";
-        //}
-        head.textContent = "Yes this website is indexed, go check out an article to see if we have data on it.";
+       head.textContent = "Yes this website is indexed, go check out an article to see if we have data on it.";
     } else {
         head.textContent = "Sorry this website has not been indexed yet.";
     }
     
 }
 
-//  function checkContent(tab) {
-
-//      chrome.tabs.sendMessage(tab[0].id, {txt: "getInfo"}, gotMessage);
-//      
-//      function gotMessage(message) {
-//          isArticle = message.isArticle;
-//      };
-//  }
-
-
-
-
-function parseURL(host) {
-    
-    strURL = host.href;
-    let re = /(19|20)\d\d[-/]\d\d[-/]\d\d/;
-
-    if (strURL.indexOf("article") != -1) {
-        isArticle = true;
-    } else if (strURL.indexOf("wcm") != -1) {
-        isArticle = true;
-    } else if (re.test(strURL)) {
-        isArticle = true;
-    }
-}
-
 function showData(hostname) {
-    // looks into database
+    // Sends a GET request to app.py
+    // and app.py will check the mysql db:
     // if article is present
     // show percentage of valids vs fake
     // else

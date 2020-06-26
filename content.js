@@ -26,8 +26,6 @@ function gotMessage(message, sender, sendResponse) {
     } else {
         sendResponse({txt: "something's wrong"});
     }
-    return true;
 }
 
 
-// console.log(parseHTML(metas));
