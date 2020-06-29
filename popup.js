@@ -28,7 +28,8 @@ function showInfo(tab) {
 }
 
 function showData(hostname) {
-    // Sends a GET request to app.py
+    // Sends a message to content.js 
+    // who will send GET request to "server"/app.py
     // and app.py will check the mysql db:
     // if article is present
     // show percentage of valids vs fake
