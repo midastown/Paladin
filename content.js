@@ -15,13 +15,13 @@ function parseHTML() {
     return msg;
 }
 
-let msg = parseHTML();
 
 
 chrome.runtime.onMessage.addListener(gotMessage);
 
 function gotMessage(message, sender, sendResponse) {
     if (message.txt == "getInfo") {
+        let msg = parseHTML();
         sendResponse(msg);
     } else {
         sendResponse({txt: "something's wrong"});
