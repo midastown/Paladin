@@ -18,5 +18,5 @@
         "default_icon": "icons/paladin16.png",
         "default_popup": "popup.html"
     },
-    "permissions": [ "tabs" ]
+    "permissions": [ "tabs", "http://localhost/" ]
 }
