@@ -14,16 +14,13 @@ function showInfo(tab) {
     if (websites.has(hostname.hostname)) {
         // runs search function in content.js
         chrome.tabs.sendMessage(tab[0].id, {txt: "getInfo"}, function(message) {
-            console.log("before: " + isArticle);
             isArticle = message.isArticle;
-            // checks if the current page is an article
             if (isArticle) {
                 showData(hostname);
                 return;
-            }
-            console.log("after: " + isArticle);
-        });
-       head.textContent = "Yes this website is indexed, go check out an article to see if we have data on it.";
+        }});
+        
+        head.textContent = "Yes this website is indexed, go check out an article to see if we have data on it.";
     } else {
         head.textContent = "Sorry this website has not been indexed yet.";
     }
@@ -36,8 +33,14 @@ function showData(hostname) {
     xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status <= 300) {
             const response = JSON.parse(xhr.responseText);
-            console.log(response);
-        }
+            let valids = response.valid;
+            let fake = response.fake;
+            head.textContent = "Yes this articles has votes";
+            vote.textContent = `Num of votes: ${valids} / ${fake}.`;
+        } else {
+            head.textContent = "Sorry no one has voted for this article yet, please come back later.";
+            vote.textContent = "Num of votes: 0";
+       }
     };
 
     const json = {
@@ -47,8 +50,4 @@ function showData(hostname) {
     xhr.open('POST', 'http://localhost:5000/');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(json));
-
-
-    head.textContent = "Sorry no one has voted for this article yet, please come back later.";
-    vote.textContent = "Num of votes: 0";
 }
