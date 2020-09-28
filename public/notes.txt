@@ -1,0 +1,80 @@
+websites succesfully parsed:
+- globe and mail
+- calgary herald
+- calgary sun 
+- edmonton journal
+- edmonton sun
+- kelowna daily courier 
+- vancouver sun
+- the province
+- pentictonherald
+- winnipeg sun                 
+- recorder                     
+- standard freeholder          
+- kenora daily minerandnews
+- the whig                     
+- lf press
+- nugget                       
+- ottawa citizen
+- ottawa sun
+- owen sound sun times         
+- the observer                 
+- sault star                   
+- simcoe reformer              
+- st thomas times journal      
+- stratford beacon herald      
+- the sudbury star             
+- chronicle journal
+- timmins press
+- toronto sun
+- windsor star
+- woodstock sentinel review
+- the star phoenix
+- leader post
+- national post                
+- montrealgazette.com
+- lethbridge herald            
+- medicine hat news            
+- the spec                     
+- the record                   
+- the peter borough examiner   
+- the star                     
+- paherald.sk.ca               
+- www.lapresse.ca              
+- www.journaldemontreal.com    
+- www.journaldequebec.com      
+- daily herald tribune
+- red deer advocate
+- winnipeg free press
+- brandon sun
+- times colonist
+- trail times 
+- the telegram
+- the chronicle herald
+- salt wire
+- niagara falls review
+- le droit
+- st catharines standard
+- welland tribune
+- www.theguardian.pe.ca
+- journal pioneer
+- la voix de lest
+- white horse star
+- www.sherbrookerecord.com
+- www.ledevoir.com  
+- journalmetro.com  
+- www.lesoleil.com
+- www.latribune.ca
+
+
+website hard to parse: 
+- tj.news            => Agressive Paywall
+
+websites hard to connect:
+- alaska highway news 
+- acadie nouvelle
+- capebreton post
+- brant ford expositor
+
+
+

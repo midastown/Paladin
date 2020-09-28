@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+    "name": "Paladin",
+    "version": "1.0",
+    "description": "Protects the user from offensive news",
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "icons": {
+        "128": "icons/paladin128.png",
+        "48": "icons/paladin48.png",
+        "16": "icons/paladin16.png"
+    },
+    "browser_action": {
+        "default_icon": "icons/paladin16.png",
+        "default_popup": "popup.html"
+    },
+    "permissions": [ "tabs", "http://localhost/" ]
+}
