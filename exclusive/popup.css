@@ -22,12 +22,10 @@ body {
     margin: 30px;
 }
 
-#votes {
-    color: gray;
+#output-message {
     font-size: 10px;
     bottom: 10px;
     position: absolute;
-    right: 50px;
 }
 
 #refresh {
@@ -39,4 +37,8 @@ body {
     background-color: #C8FFD1;
     border-radius: 4px;
     color: #0D2B51; 
+}
+
+img {
+    width: 50px;
 }

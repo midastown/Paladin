@@ -14,20 +14,52 @@ mysql = MySQL(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
-        details = request.json
-        url = details['url']
+    if request.method == 'GET':
+        url = request.args.get('url')
         cur = mysql.connection.cursor()
         results = cur.execute("SELECT * FROM articles WHERE url=%s", [url])
         if results > 0:
             votes = cur.fetchall()
-            valid = votes[0][1]
-            fake = votes[0][2]
-            data = {'valid': valid, 'fake': fake}
-            return jsonify(data), 200
-    else:
-        return 'not sucessing'
+            data = jsonify(isError=False, 
+                    message="Success", statusCode=200,
+                    valid=votes[0][1], fake=votes[0][2])
+            return data, 200
+        return jsonify(isError=True, message="Failure", statusCode=418), 418
+    
+    if request.method == 'POST':
+        url = request.args.get('url')
+        valid = int(request.args.get('valid'))
+        fake = int(request.args.get('fake'))
+        cur = mysql.connection.cursor()
+        results =  cur.execute("SELECT * FROM articles WHERE url=%s", [url])
+        if results > 0:
+            votes = cur.fetchall()
+            if valid > 0:
+                cur.execute("UPDATE articles SET valid = valid + 1 WHERE url=%s", [url])
+            else:
+                cur.execute("UPDATE articles SET fake = fake + 1 WHERE url=%s", [url])
+            mysql.connection.commit()
+            data = jsonify(isError=False,
+                    message="Success", statusCode=200,
+                    good=votes[0][1] + valid, bad=votes[0][2] + fake)
+            return data, 200
+        
+        cur.execute('INSERT INTO articles(url, valid, fake) VALUES(%s, %s, %s)', [url, valid, fake])
+        mysql.connection.commit()
+        data = jsonify(isError=False,
+                message="Success",
+                good=valid, bad=fake,
+                statusCode=200)
+        return data, 200
     
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+
+
+
+
+

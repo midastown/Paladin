@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Paladin",
+    "name": "Exclusive",
     "version": "1.0",
-    "description": "Protects the user from offensive news",
+    "description": "Protects the world from offensive news",
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
@@ -10,12 +10,10 @@
         }
     ],
     "icons": {
-        "128": "icons/paladin128.png",
-        "48": "icons/paladin48.png",
-        "16": "icons/paladin16.png"
+        "128": "icons/exclusive.png"
     },
     "browser_action": {
-        "default_icon": "icons/paladin16.png",
+        "default_icon": "icons/exclusive.png",
         "default_popup": "popup.html"
     },
     "permissions": [ "tabs", "http://localhost/" ]

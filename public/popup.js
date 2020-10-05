@@ -28,26 +28,23 @@ function showInfo(tab) {
 }
 
 function showData(hostname) {
-    const xhr = new XMLHttpRequest();
-    
-    xhr.onload = () => {
-        if (xhr.status >= 200 && xhr.status <= 300) {
-            const response = JSON.parse(xhr.responseText);
-            let valids = response.valid;
-            let fake = response.fake;
+    async function getData(url=`http://localhost:5000?url=${hostname.href}`) {
+        const data = await fetch(url, {
+            method: 'GET'
+        });
+        return data.json();
+    }
+
+
+    getData().then(data => { 
+        if (data.isError == false) {
+            let valid = data.valid
+            let fake = data.fake;
             head.textContent = "Yes this articles has votes";
-            vote.textContent = `Num of votes: ${valids} / ${fake}.`;
+            vote.textContent = `Num of votes: ${valid} / ${fake}.`;
         } else {
             head.textContent = "Sorry no one has voted for this article yet, please come back later.";
             vote.textContent = "Num of votes: 0";
-       }
-    };
-
-    const json = {
-        "url": hostname.href,
-    };
-    
-    xhr.open('POST', 'http://localhost:5000/');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify(json));
+        }
+    })
 }

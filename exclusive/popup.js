@@ -1,8 +1,9 @@
 
 // tags in the popup.html
 let head = document.getElementById("text");
-let perc = document.getElementById("percentage");
-let vote = document.getElementById("votes");
+let buttons = document.getElementById("buttons");
+let output = document.getElementById("output-message");
+
 let isArticle = false;
 
 // Getting the current tab
@@ -16,38 +17,45 @@ function showInfo(tab) {
         chrome.tabs.sendMessage(tab[0].id, {txt: "getInfo"}, function(message) {
             isArticle = message.isArticle;
             if (isArticle) {
-                showData(hostname);
+                renderCastHTML(hostname);
                 return;
         }});
         
-        head.textContent = "Yes this website is indexed, go check out an article to see if we have data on it.";
+        head.textContent = "Yes this website is indexed, click on an article, do your research and then cast your vote.";
     } else {
         head.textContent = "Sorry this website has not been indexed yet.";
     }
     
 }
 
-function showData(hostname) {
-    const xhr = new XMLHttpRequest();
-    
-    xhr.onload = () => {
-        if (xhr.status >= 200 && xhr.status <= 300) {
-            const response = JSON.parse(xhr.responseText);
-            let valids = response.valid;
-            let fake = response.fake;
-            head.textContent = "Yes this articles has votes";
-            vote.textContent = `Num of votes: ${valids} / ${fake}.`;
+function renderCastHTML(hostname){
+    // render HTML
+    // create buttons who launch CastVote() function on-click
+    castVote(hostname, valid, fake);
+}
+
+
+
+function castVote(hostname, valid, fake) {
+    // Hard-coded values to test server
+    async function postData(url=`http://localhost:5000?url=${hostname.href}&valid=${valid}&fake=${fake}`) {
+        const data = await fetch(url, {
+            method: 'POST', 
+            cache: 'no-cache',
+        });
+        return data.json();
+    }
+
+
+    postData().then(data => {
+        if (data.isError == false) {
+            console.log(data);
+            head.textContent = `Here's what the current vote show: ${valid} / %{fake}`;
+            output.textContent = `${data.message}. Vote casted!`;
+
         } else {
             head.textContent = "Sorry no one has voted for this article yet, please come back later.";
             vote.textContent = "Num of votes: 0";
-       }
-    };
-
-    const json = {
-        "url": hostname.href,
-    };
-    
-    xhr.open('POST', 'http://localhost:5000/');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify(json));
+        }
+    })
 }
