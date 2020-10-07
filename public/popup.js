@@ -20,7 +20,7 @@ function showInfo(tab) {
                 return;
         }});
         
-        head.textContent = "Yes this website is indexed, go check out an article to see if we have data on it.";
+        head.textContent = "This website is indexed, check out an article.";
     } else {
         head.textContent = "Sorry this website has not been indexed yet.";
     }
@@ -40,11 +40,35 @@ function showData(hostname) {
         if (data.isError == false) {
             let valid = data.valid
             let fake = data.fake;
+            let percentToPrint = calculatePercentage(valid, fake);
+
             head.textContent = "Yes this articles has votes";
+            perc.style = `color: ${percentToPrint.details[0]};`;
+            perc.textContent = `${percentToPrint.perc.toString()}% ${percentToPrint.details[1]}.`
             vote.textContent = `Num of votes: ${valid} / ${fake}.`;
         } else {
-            head.textContent = "Sorry no one has voted for this article yet, please come back later.";
+            head.textContent = "Sorry no one has voted for this article yet.";
             vote.textContent = "Num of votes: 0";
         }
     })
 }
+
+function calculatePercentage(votesValid, votesFake) {
+    let validsPercent = Math.round((votesValid * 100) / (votesValid + votesFake));
+    let percentageToPrint = {
+        "perc": (votesValid >= votesFake) ? validsPercent : 100 - validsPercent,
+        "details": (votesValid >= votesFake) ? ["green", "valid"] : ["red", "fake"]
+    };
+
+    return percentageToPrint;
+
+
+}
+
+
+
+
+
+
+
+
