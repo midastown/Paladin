@@ -3,6 +3,8 @@
 let head = document.getElementById("text");
 let buttons = document.getElementById("buttons");
 let output = document.getElementById("output-message");
+let valid_button = document.getElementById("valid");
+let fake_button = document.getElementById("fake");
 
 let isArticle = false;
 
@@ -29,16 +31,24 @@ function showInfo(tab) {
 }
 
 function renderCastHTML(hostname){
-    // render HTML
-    // create buttons who launch CastVote() function on-click
-    castVote(hostname, valid, fake);
+    // shows buttons and wait for a vote
+    head.textContent = "To the best of my ability, I sincerely cast my vote:"
+    buttons.removeAttribute("hidden");
+    valid_button.addEventListener('click', event => {
+        castVote(hostname, 1, 0);
+    });
+    fake_button.addEventListener('click', event => {
+        castVote(hostname, 0, 1);
+    });
+
 }
 
 
 
 function castVote(hostname, valid, fake) {
-    // Hard-coded values to test server
-    async function postData(url=`http://localhost:5000?url=${hostname.href}&valid=${valid}&fake=${fake}`) {
+    // sends post request returns status response and 
+    // vote result
+    async function postData(url) {
         const data = await fetch(url, {
             method: 'POST', 
             cache: 'no-cache',
@@ -47,10 +57,10 @@ function castVote(hostname, valid, fake) {
     }
 
 
-    postData().then(data => {
+    postData(`http://localhost:5000?url=${hostname.href}&valid=${valid}&fake=${fake}`).then(data => {
         if (data.isError == false) {
             console.log(data);
-            head.textContent = `Here's what the current vote show: ${valid} / %{fake}`;
+            head.textContent = `Here's what the current vote show: ${data.good} / ${data.bad}`;
             output.textContent = `${data.message}. Vote casted!`;
 
         } else {
