@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_mysqldb import MySQL
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 import yaml
 
 app = Flask(__name__)
@@ -11,6 +13,12 @@ app.config['MYSQL_PASSWORD'] = db['mysql_password']
 app.config['MYSQL_DB'] = db['mysql_db']
 
 mysql = MySQL(app)
+
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=["200 per day", "50 per hour"]
+)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

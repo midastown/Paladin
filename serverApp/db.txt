@@ -1,0 +1,7 @@
+mysql_host: 'localhost'
+mysql_db: 'paladin'
+
+# Enter config below and rename this file db.yaml
+
+mysql_user: 'YOUR_USERNAME'
+mysql_password: 'YOUR_PASSWORD'
