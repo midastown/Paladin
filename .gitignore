@@ -1,3 +1,17 @@
 *.min
 *.yaml
 .DS_Store
+
+venv/
+
+*.pyc
+__pycache__/
+
+instance/
+
+.pytest_cache/
+.coverage
+
+dist/
+build/
+*.egg-info/
